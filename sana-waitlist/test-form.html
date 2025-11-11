@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANA Waitlist Form Test</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #0A5C3E;
+        }
+        .test-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .status {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        .status.pass {
+            background: #10B981;
+            color: white;
+        }
+        .status.fail {
+            background: #EF4444;
+            color: white;
+        }
+        .status.pending {
+            background: #F59E0B;
+            color: white;
+        }
+        button {
+            background: #0A5C3E;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 10px 10px 10px 0;
+        }
+        button:hover {
+            background: #084a32;
+        }
+        .test-result {
+            background: #F5F5F5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .success {
+            color: #10B981;
+            font-weight: 600;
+        }
+        .error {
+            color: #EF4444;
+            font-weight: 600;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .instructions {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .automated-tests {
+            background: #DBEAFE;
+            border-left: 4px solid #3B82F6;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 SANA Waitlist - Form Join Test</h1>
+
+    <div class="instructions">
+        <strong>📋 Purpose:</strong> This page verifies that users can successfully join the SANA waitlist.
+    </div>
+
+    <div class="test-section">
+        <h2>Manual Test Instructions</h2>
+        <ol>
+            <li>Click <a href="http://localhost:8000" target="_blank">Open SANA Waitlist Page</a></li>
+            <li>Click any "Join the Waitlist" button</li>
+            <li>Fill in the form:
+                <ul>
+                    <li><strong>First Name:</strong> Test User</li>
+                    <li><strong>Email:</strong> test@example.com</li>
+                    <li><strong>I am a:</strong> Client or Practitioner</li>
+                </ul>
+            </li>
+            <li>Click "Join the Waitlist" submit button</li>
+            <li>Verify success message appears with:
+                <ul>
+                    <li>✅ "You're on the list!" message</li>
+                    <li>✅ Position number (e.g., "You're #1201 on the waitlist")</li>
+                    <li>✅ Unique referral link</li>
+                    <li>✅ "Copy Link" button works</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>Automated Quick Tests</h2>
+        <div class="automated-tests">
+            <strong>🤖 Run these automated checks:</strong>
+        </div>
+
+        <button onclick="testFormExists()">1. Check Form Exists</button>
+        <button onclick="testFieldNames()">2. Check Field Names</button>
+        <button onclick="testEventListeners()">3. Check Event Listeners</button>
+        <button onclick="testValidation()">4. Check Validation Function</button>
+        <button onclick="testLocalStorage()">5. Check LocalStorage</button>
+        <button onclick="runAllTests()">🚀 Run All Tests</button>
+
+        <div id="testResults"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Live Form Preview</h2>
+        <p>The SANA waitlist page is embedded below. Test the form directly:</p>
+        <iframe src="http://localhost:8000" title="SANA Waitlist"></iframe>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Scenarios</h2>
+
+        <h3>✅ Valid Submission Test</h3>
+        <ul>
+            <li>First Name: "John"</li>
+            <li>Email: "john@example.com"</li>
+            <li>User Type: "Client"</li>
+            <li><strong>Expected:</strong> Success message with position number</li>
+        </ul>
+
+        <h3>❌ Invalid Email Test</h3>
+        <ul>
+            <li>First Name: "Jane"</li>
+            <li>Email: "notanemail"</li>
+            <li>User Type: "Practitioner"</li>
+            <li><strong>Expected:</strong> Error notification "Please enter a valid email address"</li>
+        </ul>
+
+        <h3>⚠️ Duplicate Email Test</h3>
+        <ul>
+            <li>Submit same email twice</li>
+            <li><strong>Expected:</strong> "This email is already on the waitlist!" notification</li>
+        </ul>
+
+        <h3>🔒 Required Fields Test</h3>
+        <ul>
+            <li>Try submitting with empty fields</li>
+            <li><strong>Expected:</strong> Browser validation prevents submission</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>Data Verification</h2>
+        <button onclick="checkWaitlistData()">Check LocalStorage Data</button>
+        <button onclick="clearWaitlistData()">Clear LocalStorage (Reset)</button>
+        <div id="dataResults"></div>
+    </div>
+
+    <script>
+        function addResult(message, isSuccess) {
+            const resultsDiv = document.getElementById('testResults');
+            const resultItem = document.createElement('div');
+            resultItem.className = 'test-result';
+            resultItem.innerHTML = `<span class="${isSuccess ? 'success' : 'error'}">${isSuccess ? '✅' : '❌'}</span> ${message}`;
+            resultsDiv.appendChild(resultItem);
+        }
+
+        function clearResults() {
+            document.getElementById('testResults').innerHTML = '';
+        }
+
+        async function testFormExists() {
+            clearResults();
+            try {
+                const response = await fetch('http://localhost:8000/index.html');
+                const html = await response.text();
+
+                const hasForm = html.includes('id="waitlistForm"');
+                const hasEmailField = html.includes('name="email"');
+                const hasFirstNameField = html.includes('name="firstName"');
+                const hasUserTypeField = html.includes('name="userType"');
+
+                if (hasForm && hasEmailField && hasFirstNameField && hasUserTypeField) {
+                    addResult('Form exists with all required fields (firstName, email, userType)', true);
+                } else {
+                    addResult('Form missing required fields', false);
+                }
+            } catch (error) {
+                addResult('Error checking form: ' + error.message, false);
+            }
+        }
+
+        async function testFieldNames() {
+            clearResults();
+            try {
+                const response = await fetch('http://localhost:8000/index.html');
+                const html = await response.text();
+
+                const checks = [
+                    { name: 'firstName field', test: html.includes('name="firstName"') },
+                    { name: 'email field', test: html.includes('name="email"') },
+                    { name: 'userType field', test: html.includes('name="userType"') },
+                    { name: 'required attributes', test: html.includes('required') }
+                ];
+
+                checks.forEach(check => {
+                    addResult(`${check.name}: ${check.test ? 'Found' : 'Missing'}`, check.test);
+                });
+            } catch (error) {
+                addResult('Error: ' + error.message, false);
+            }
+        }
+
+        async function testEventListeners() {
+            clearResults();
+            try {
+                const response = await fetch('http://localhost:8000/script.js');
+                const js = await response.text();
+
+                const checks = [
+                    { name: 'Form submit listener', test: js.includes("form.addEventListener('submit'") },
+                    { name: 'Join button listener', test: js.includes("joinWaitlistBtn") },
+                    { name: 'handleFormSubmit function', test: js.includes("function handleFormSubmit") },
+                    { name: 'showSuccessMessage function', test: js.includes("function showSuccessMessage") }
+                ];
+
+                checks.forEach(check => {
+                    addResult(`${check.name}: ${check.test ? 'Implemented' : 'Missing'}`, check.test);
+                });
+            } catch (error) {
+                addResult('Error: ' + error.message, false);
+            }
+        }
+
+        async function testValidation() {
+            clearResults();
+            try {
+                const response = await fetch('http://localhost:8000/script.js');
+                const js = await response.text();
+
+                const checks = [
+                    { name: 'Email validation function', test: js.includes("function isValidEmail") },
+                    { name: 'Email regex pattern', test: js.includes("/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/") },
+                    { name: 'Duplicate email check', test: js.includes("existingUser") },
+                    { name: 'Error notifications', test: js.includes("showNotification") }
+                ];
+
+                checks.forEach(check => {
+                    addResult(`${check.name}: ${check.test ? 'Implemented' : 'Missing'}`, check.test);
+                });
+            } catch (error) {
+                addResult('Error: ' + error.message, false);
+            }
+        }
+
+        function testLocalStorage() {
+            clearResults();
+            try {
+                // Check if localStorage is available
+                if (typeof(Storage) !== "undefined") {
+                    addResult('LocalStorage is available in browser', true);
+
+                    // Check if waitlist data exists
+                    const data = localStorage.getItem('sanaWaitlist');
+                    if (data) {
+                        const parsed = JSON.parse(data);
+                        addResult(`Waitlist data found: ${parsed.users.length} users, count: ${parsed.count}`, true);
+                    } else {
+                        addResult('No waitlist data yet (this is normal before first signup)', true);
+                    }
+                } else {
+                    addResult('LocalStorage not available', false);
+                }
+            } catch (error) {
+                addResult('Error: ' + error.message, false);
+            }
+        }
+
+        async function runAllTests() {
+            clearResults();
+            addResult('Running all tests...', true);
+            await testFormExists();
+            await testFieldNames();
+            await testEventListeners();
+            await testValidation();
+            testLocalStorage();
+            addResult('✨ All tests completed!', true);
+        }
+
+        function checkWaitlistData() {
+            const dataDiv = document.getElementById('dataResults');
+            try {
+                const data = localStorage.getItem('sanaWaitlist');
+                if (data) {
+                    const parsed = JSON.parse(data);
+                    dataDiv.innerHTML = `
+                        <div class="test-result">
+                            <strong>📊 Waitlist Data:</strong><br>
+                            Total Count: ${parsed.count}<br>
+                            Users Registered: ${parsed.users.length}<br><br>
+                            <strong>Users:</strong><br>
+                            ${parsed.users.map(u => `
+                                - ${u.firstName} (${u.email})<br>
+                                  Position: #${u.position}, Type: ${u.userType}<br>
+                                  Referral Code: ${u.referralCode}<br>
+                                  Referrals: ${u.referrals}
+                            `).join('<br>')}
+                        </div>
+                    `;
+                } else {
+                    dataDiv.innerHTML = '<div class="test-result">⚠️ No data in localStorage yet. Sign up first!</div>';
+                }
+            } catch (error) {
+                dataDiv.innerHTML = `<div class="test-result error">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        function clearWaitlistData() {
+            if (confirm('Are you sure you want to clear all waitlist data?')) {
+                localStorage.removeItem('sanaWaitlist');
+                document.getElementById('dataResults').innerHTML = '<div class="test-result success">✅ LocalStorage cleared! Refresh the main page to start fresh.</div>';
+            }
+        }
+
+        // Run initial test on load
+        window.addEventListener('load', () => {
+            console.log('Test page loaded. Ready to verify waitlist functionality.');
+        });
+    </script>
+</body>
+</html>
