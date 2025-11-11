@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANA Waitlist - Test Checklist</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #0A5C3E;
+            border-bottom: 3px solid #0A5C3E;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #1A2B4A;
+            margin-top: 30px;
+        }
+        .test-section {
+            background: #F5F5F5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .test-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        .status.pass {
+            background: #10B981;
+            color: white;
+        }
+        .status.test {
+            background: #3B82F6;
+            color: white;
+        }
+        .code {
+            background: #1A2B4A;
+            color: #10B981;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        a {
+            color: #0A5C3E;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .note {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 12px;
+            margin: 15px 0;
+        }
+        .success-box {
+            background: #D1FAE5;
+            border-left: 4px solid #10B981;
+            padding: 12px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 SANA Waitlist Landing Page - Test Checklist</h1>
+
+    <div class="success-box">
+        <strong>✅ Website is LIVE:</strong> <a href="http://localhost:8000" target="_blank">http://localhost:8000</a>
+    </div>
+
+    <h2>1. Button Functionality Tests</h2>
+    <div class="test-section">
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Hero "Join the Waitlist" button</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Click hero button → Should show email form with smooth scroll</small><br>
+                <small class="code">ID: #joinWaitlistBtn</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Secondary "Are you a practitioner?" link</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Click link → Should smooth scroll to practitioner apply section</small><br>
+                <small class="code">href="#practitioner-apply"</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Final CTA "Join the Waitlist" button</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Click button → Should show email form and scroll to it</small><br>
+                <small class="code">ID: #finalJoinBtn</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Mobile Sticky CTA button</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Resize to mobile → Sticky button appears at bottom → Click shows form</small><br>
+                <small class="code">ID: #mobileJoinBtn</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Form Submit button</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Fill form → Click submit → Should show success message with position</small><br>
+                <small class="code">Form ID: #waitlistForm</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Copy Referral Link button</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>After signup → Click "Copy Link" → Should copy to clipboard and show notification</small><br>
+                <small class="code">ID: #copyLinkBtn</small>
+            </div>
+        </div>
+    </div>
+
+    <h2>2. Form Validation Tests</h2>
+    <div class="test-section">
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Empty fields validation</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Submit empty form → Should show browser validation errors</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Invalid email validation</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Enter "notanemail" → Submit → Should show error notification</small><br>
+                <small class="code">Function: isValidEmail()</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Duplicate email detection</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Submit same email twice → Should show "already on waitlist" message</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>User type selection required</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Try submitting without selecting "Client" or "Practitioner" → Should require selection</small>
+            </div>
+        </div>
+    </div>
+
+    <h2>3. Data Persistence Tests</h2>
+    <div class="test-section">
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>LocalStorage saves data</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Sign up → Refresh page → Waitlist count should persist</small><br>
+                <small class="code">Key: sanaWaitlist</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Position counter increments</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Sign up user 1 → Get position → Sign up user 2 → Position should be +1</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Unique referral codes generated</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Sign up → Check referral link → Should have unique 8-character code</small><br>
+                <small class="code">Function: generateReferralCode()</small>
+            </div>
+        </div>
+    </div>
+
+    <h2>4. Referral System Tests</h2>
+    <div class="test-section">
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Referral URL parameter detected</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Open <code>?ref=ABC12345</code> → Should show notification if valid code</small><br>
+                <small class="code">Function: handleReferralCode()</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Referral tracked in sessionStorage</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Visit with ref code → Check sessionStorage → Should store referralCode</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Referrer gets credit</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>User A signs up → User B uses A's link → A's referral count increases</small><br>
+                <small class="code">Function: processReferral()</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Position bonus calculation</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Get 3 referrals → Position moves up 10 spots</small><br>
+                <small class="code">Logic: Math.floor(referrals / 3) * 10</small>
+            </div>
+        </div>
+    </div>
+
+    <h2>5. Responsive Design Tests</h2>
+    <div class="test-section">
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Desktop view (1200px+)</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Hero: 2-column layout, text left, visual right</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Tablet view (768px - 1024px)</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Smaller fonts, adjusted spacing, still 2-column hero</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Mobile view (320px - 768px)</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Single column layout, stacked sections, mobile sticky CTA visible</small><br>
+                <small class="code">@media (max-width: 768px)</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Feature cards stack on mobile</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>3-column cards → 1-column on mobile (What is SANA, Benefits sections)</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Testimonials stack on mobile</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>2-column testimonials → 1-column on mobile</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Footer layout mobile-friendly</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Horizontal footer → Vertical stack on mobile</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Touch targets sized correctly</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>All buttons and links at least 44x44px tap area on mobile</small>
+            </div>
+        </div>
+    </div>
+
+    <h2>6. Animation & Interaction Tests</h2>
+    <div class="test-section">
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Button hover effects</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Hover buttons → Should darken + scale(1.02) + shadow</small><br>
+                <small class="code">transition: all 0.3s ease</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Form slide-down animation</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Click CTA → Form slides down with smooth animation</small><br>
+                <small class="code">@keyframes slideDown</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Health Graph data point pulse</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Green dots on Health Graph should pulse continuously</small><br>
+                <small class="code">@keyframes pulse</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Metric cards float animation</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Floating metric cards should gently move up/down</small><br>
+                <small class="code">@keyframes float</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Card hover lift effect</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Hover feature/benefit cards → Should lift up slightly</small><br>
+                <small class="code">transform: translateY(-5px)</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Smooth scroll to sections</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Click anchor links → Should smooth scroll to target</small><br>
+                <small class="code">scrollIntoView({behavior: 'smooth'})</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Notification toast animations</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Notifications slide in from right, auto-dismiss after 3s</small><br>
+                <small class="code">@keyframes slideInRight/slideOutRight</small>
+            </div>
+        </div>
+    </div>
+
+    <h2>7. Browser Console Tests</h2>
+    <div class="test-section">
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>No JavaScript errors</strong> <span class="status test">NEEDS TESTING</span><br>
+                <small>Open DevTools Console → Should show no errors</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Analytics events logged</strong> <span class="status pass">IMPLEMENTED</span><br>
+                <small>Console shows: page_view, cta_click, form_submit, referral_share</small><br>
+                <small class="code">Function: trackEvent()</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>LocalStorage data structure correct</strong> <span class="status test">NEEDS TESTING</span><br>
+                <small>DevTools → Application → LocalStorage → Check sanaWaitlist structure</small>
+            </div>
+        </div>
+    </div>
+
+    <h2>8. Performance Tests</h2>
+    <div class="test-section">
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Page loads quickly</strong> <span class="status test">NEEDS TESTING</span><br>
+                <small>Hard refresh → Should load in < 1 second</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>Animations are smooth (60fps)</strong> <span class="status test">NEEDS TESTING</span><br>
+                <small>DevTools Performance tab → Check for dropped frames</small>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <input type="checkbox" class="checkbox">
+            <div>
+                <strong>No layout shifts (CLS)</strong> <span class="status test">NEEDS TESTING</span><br>
+                <small>Page should not jump around while loading</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="note">
+        <strong>📋 Testing Instructions:</strong><br>
+        1. Open <a href="http://localhost:8000" target="_blank">http://localhost:8000</a> in your browser<br>
+        2. Go through each test item and check the checkbox when verified<br>
+        3. Test on multiple browsers: Chrome, Firefox, Safari<br>
+        4. Test responsive design by resizing browser window<br>
+        5. Check DevTools Console for errors<br>
+        6. Test on real mobile device if possible
+    </div>
+
+    <div class="success-box">
+        <strong>🎯 Expected Results:</strong><br>
+        • All buttons trigger correct actions<br>
+        • Form validates and submits successfully<br>
+        • Referral system works end-to-end<br>
+        • Responsive on all screen sizes<br>
+        • Animations are smooth<br>
+        • No console errors<br>
+        • Data persists after refresh
+    </div>
+
+    <h2>9. Manual Test Scenario</h2>
+    <div class="test-section">
+        <h3>Complete User Flow Test:</h3>
+        <ol>
+            <li>Visit homepage → Verify hero section loads correctly</li>
+            <li>Click "Join the Waitlist" → Form appears and scrolls into view</li>
+            <li>Try submitting empty form → Validation errors appear</li>
+            <li>Enter invalid email → Error notification shows</li>
+            <li>Fill form correctly → Submit → Success message appears</li>
+            <li>Note your position number (e.g., #1201)</li>
+            <li>Copy referral link → Notification confirms copy</li>
+            <li>Open referral link in new tab → Notification shows you were referred</li>
+            <li>Sign up using referral link → New position assigned</li>
+            <li>Refresh page → Waitlist count persists</li>
+            <li>Resize window to mobile → Sticky CTA appears</li>
+            <li>All sections stack correctly on mobile</li>
+        </ol>
+    </div>
+
+    <script>
+        // Auto-check if localStorage has test data
+        window.addEventListener('load', () => {
+            const stored = localStorage.getItem('sanaWaitlist');
+            if (stored) {
+                console.log('✅ LocalStorage data found:', JSON.parse(stored));
+            } else {
+                console.log('⚠️ No localStorage data yet. Sign up to test!');
+            }
+        });
+    </script>
+</body>
+</html>
