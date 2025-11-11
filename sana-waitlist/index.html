@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANA - Healing, Now Measurable | Join the Waitlist</title>
+    <meta name="description" content="Join SANA's waitlist. Connect with verified wellness professionals and use AI to show real data behind your wellbeing.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Section 1: Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <div class="badge">
+                        <span class="badge-icon">⚡</span>
+                        <span>Powered by AI • Backed by Research</span>
+                    </div>
+
+                    <h1 class="hero-headline">Healing, now measurable.</h1>
+
+                    <p class="hero-subheadline">
+                        SANA connects you with verified wellness professionals and uses AI to show real data behind your wellbeing.
+                    </p>
+
+                    <div class="cta-section">
+                        <button class="btn btn-primary" id="joinWaitlistBtn">Join the Waitlist</button>
+                        <a href="#practitioner-apply" class="secondary-link">Are you a practitioner? → Apply here</a>
+                    </div>
+
+                    <div class="trust-indicators">
+                        <div class="indicator">
+                            <span class="checkmark">✓</span>
+                            <span>Free to join</span>
+                        </div>
+                        <div class="indicator">
+                            <span class="checkmark">✓</span>
+                            <span>Data-secure</span>
+                        </div>
+                        <div class="indicator">
+                            <span class="checkmark">✓</span>
+                            <span>Evidence-based</span>
+                        </div>
+                    </div>
+
+                    <div class="waitlist-count">
+                        Join <span id="waitlistCount">1,200+</span> people on the waitlist
+                    </div>
+                </div>
+
+                <div class="hero-right">
+                    <div class="health-graph-container">
+                        <svg class="health-graph" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Body silhouette -->
+                            <ellipse cx="200" cy="80" rx="35" ry="45" fill="#E8F5E9" stroke="#0A5C3E" stroke-width="2"/>
+                            <path d="M 200 125 Q 180 200 180 300 L 180 400 M 180 300 L 150 350 M 200 125 Q 220 200 220 300 L 220 400 M 220 300 L 250 350"
+                                  stroke="#0A5C3E" stroke-width="2" fill="none"/>
+
+                            <!-- Data points -->
+                            <circle cx="200" cy="70" r="6" fill="#10B981" class="data-point"/>
+                            <circle cx="160" cy="180" r="6" fill="#10B981" class="data-point"/>
+                            <circle cx="240" cy="180" r="6" fill="#10B981" class="data-point"/>
+                            <circle cx="200" cy="250" r="6" fill="#10B981" class="data-point"/>
+                            <circle cx="180" cy="350" r="6" fill="#10B981" class="data-point"/>
+                            <circle cx="220" cy="350" r="6" fill="#10B981" class="data-point"/>
+
+                            <!-- Connection lines -->
+                            <path d="M 200 70 L 160 180 L 200 250 L 240 180 L 200 70"
+                                  stroke="#0A5C3E" stroke-width="1" fill="none" opacity="0.3" stroke-dasharray="2,2"/>
+                        </svg>
+
+                        <!-- Floating metric cards -->
+                        <div class="metric-card" style="top: 10%; left: -10%;">
+                            <div class="metric-label">Sleep Quality</div>
+                            <div class="metric-value">8.2</div>
+                        </div>
+                        <div class="metric-card" style="top: 30%; right: -10%;">
+                            <div class="metric-label">Stress Level</div>
+                            <div class="metric-value">3.4</div>
+                        </div>
+                        <div class="metric-card" style="bottom: 30%; left: -10%;">
+                            <div class="metric-label">Energy</div>
+                            <div class="metric-value">7.8</div>
+                        </div>
+                        <div class="metric-card" style="bottom: 10%; right: -10%;">
+                            <div class="metric-label">Wellbeing</div>
+                            <div class="metric-value">8.5</div>
+                        </div>
+
+                        <!-- AI Insight box -->
+                        <div class="ai-insight">
+                            <div class="ai-icon">🤖</div>
+                            <div class="ai-text">Your wellness score improved 23% this month</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inline Email Capture Form (hidden initially) -->
+            <div class="email-capture-form" id="emailCaptureForm" style="display: none;">
+                <div class="form-container">
+                    <h3>Join the SANA Waitlist</h3>
+                    <form id="waitlistForm">
+                        <input type="text" name="firstName" placeholder="First Name" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <select name="userType" required>
+                            <option value="">I am a...</option>
+                            <option value="client">Client</option>
+                            <option value="practitioner">Practitioner</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Join the Waitlist</button>
+                        <div class="privacy-note">
+                            🔒 We respect your privacy. Unsubscribe anytime.
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Success Message (hidden initially) -->
+            <div class="success-message" id="successMessage" style="display: none;">
+                <div class="success-container">
+                    <div class="success-icon">✅</div>
+                    <h3>You're on the list!</h3>
+                    <p class="position-info">You're #<span id="userPosition">847</span> on the waitlist.</p>
+                    <p>Check your email for next steps. We'll notify you when SANA launches.</p>
+                    <div class="referral-section">
+                        <h4>Want early access? Share your unique link:</h4>
+                        <div class="referral-link-container">
+                            <input type="text" id="referralLink" value="https://sana.app/waitlist?ref=USER123" readonly>
+                            <button class="btn btn-secondary" id="copyLinkBtn">Copy Link</button>
+                        </div>
+                        <p class="referral-incentive">For every 3 referrals, move up 10 spots.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: What is SANA? -->
+    <section class="what-is-sana">
+        <div class="container">
+            <h2>One Platform. Complete Wellness.</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="feature-icon">🏥</div>
+                    <h3>For Clients</h3>
+                    <h4>Find Verified Practitioners</h4>
+                    <p>Book appointments with trusted CAM professionals. Track your wellness journey with AI insights.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>For Practitioners</h3>
+                    <h4>Manage Your Practice</h4>
+                    <p>All-in-one platform for bookings, client notes, payments, and outcome tracking.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>For Research</h3>
+                    <h4>Evidence-Based Medicine</h4>
+                    <p>Turn CAM practice into research-grade data. First credibility scores for holistic healthcare.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: The SANA Health Graph -->
+    <section class="health-graph-section">
+        <div class="container">
+            <h2>See Your Complete Health Picture</h2>
+            <div class="health-graph-visual">
+                <img src="assets/images/health-graph-detailed.png" alt="SANA Health Graph" class="placeholder-image">
+                <div class="graph-placeholder">
+                    <div class="placeholder-text">🧬 Interactive Health Graph Visualization</div>
+                </div>
+            </div>
+            <div class="health-graph-explainer">
+                <h3>SANA Health Graph integrates:</h3>
+                <ul class="integration-list">
+                    <li>Practitioner session data</li>
+                    <li>Your wellness tracking</li>
+                    <li>Wearable biometrics (Apple Health, Fitbit, Oura, WHOOP)</li>
+                    <li>AI-powered journal insights</li>
+                </ul>
+                <p class="explainer-note">Get a real-time wellness score and personalized recommendations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <h2>Join 500+ Practitioners Already Using SANA</h2>
+
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="testimonial-quote">
+                        "SANA gave me 10 hours back every week. My clients can finally see their progress."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SC</div>
+                        <div class="author-info">
+                            <div class="author-name">Sarah Chen</div>
+                            <div class="author-title">Medical Herbalist, London</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-quote">
+                        "For the first time, I can prove my treatments work. Game changer."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JW</div>
+                        <div class="author-info">
+                            <div class="author-name">James Wright</div>
+                            <div class="author-title">Acupuncturist, Manchester</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="practitioner-grid">
+                <div class="practitioner-photo">A</div>
+                <div class="practitioner-photo">B</div>
+                <div class="practitioner-photo">C</div>
+                <div class="practitioner-photo">D</div>
+                <div class="practitioner-photo">E</div>
+                <div class="practitioner-photo">F</div>
+                <div class="practitioner-photo">G</div>
+                <div class="practitioner-photo">H</div>
+                <div class="practitioner-photo">I</div>
+                <div class="practitioner-photo">J</div>
+                <div class="practitioner-photo">K</div>
+                <div class="practitioner-photo">L</div>
+            </div>
+            <p class="practitioner-count">Trusted by 500+ verified practitioners</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">94%</div>
+                    <div class="stat-label">Satisfaction</div>
+                </div>
+                <div class="stat-divider">|</div>
+                <div class="stat">
+                    <div class="stat-value">4.8/5</div>
+                    <div class="stat-label">Rating</div>
+                </div>
+                <div class="stat-divider">|</div>
+                <div class="stat">
+                    <div class="stat-value">89%</div>
+                    <div class="stat-label">See Improvement</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Waitlist Benefits -->
+    <section class="waitlist-benefits">
+        <div class="container">
+            <h2>Why Join the Waitlist?</h2>
+            <div class="benefit-cards">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Early Access</h3>
+                    <p>Be first to use SANA. Skip the line when we launch in Q2 2025.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Founding Member Pricing</h3>
+                    <p>Lock in 50% off for life. £25/month becomes £12.50/month forever.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Shape the Product</h3>
+                    <p>Your feedback directly influences features. Build SANA with us.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Transform Your Wellness Journey?</h2>
+            <button class="btn btn-primary btn-large" id="finalJoinBtn">Join the Waitlist</button>
+            <p class="cta-subtext">
+                Join <span id="finalWaitlistCount">1,200+</span> practitioners and clients building the future of holistic healthcare.
+            </p>
+            <p class="cta-note">No credit card required. We'll email you when we launch.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <span class="logo-letter">S</span>
+                        <span class="logo-text">SANA</span>
+                    </div>
+                </div>
+                <div class="footer-center">
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                </div>
+                <div class="footer-right">
+                    <span>© 2025 SANA. All rights reserved.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="mobile-sticky-cta">
+        <button class="btn btn-primary" id="mobileJoinBtn">Join Waitlist</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
